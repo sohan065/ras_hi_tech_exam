@@ -10,7 +10,7 @@ git clone https://github.com/sohan065/ras_hi_tech_exam.git
 Go to the project directory.
 
 ```bash
-cd ras_hi_tech_exam.git
+cd ras_hi_tech_exam
 ```
 
 Install the composer & npm dependencies.
