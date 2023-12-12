@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+}
+body {
+    display: flex;
+}
+.sidebar {
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 50px;
+    padding: 0 0.17rem;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background-color: aqua;
+}
+.sidebar:hover {
+    width: 240px;
+    transition: 0.5s;
+}
+.logo {
+    height: 80px;
+    padding: 16px;
+}
+.menu {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.menu li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.menu li:hover {
+    background-color: white;
+}
+.menu li a {
+    font-size: 14px;
+    display: flex;
+    text-decoration: none;
+    gap: 1.5rem;
+}
+.menu li a span {
+    overflow: hidden;
+}
+
+.menu a i {
+    font-size: 1.2rem;
+}
+.logout {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* main conntent */
+.main-content {
+    position: relative;
+    width: 100%;
+    background-color: aquamarine;
+    padding: 1rem;
+}
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 10px 2rem;
+    margin-bottom: 1rem;
+}
+.section-title {
+}
+.user-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgb(237, 237, 237);
+    padding: 4px 12px;
+    border-radius: 15px;
+}
+.search-box input {
+    background: transparent;
+    padding: 10px;
+}
+.search-box i {
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s ease-out;
+}
+.search-box i:hover {
+    transform: scale(1.2);
+}
+/* end of content */
+.payment-card {
+    background-color: rgb(229, 223, 2223);
+    border-radius: 15px;
+    width: 250px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.2rem;
+    transition: all 0.5s ease-in-out;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.card-header i {
+    height: 60px;
+    width: 60px;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    background-color: red;
+}
+.amount {
+    display: flex;
+    flex-direction: column;
+}
+.card-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.navbar-left li {
+    list-style: none;
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+.navbar-left li a {
+    font-size: 14px;
+    display: flex;
+    text-decoration: none;
+    gap: 1.5rem;
+}
