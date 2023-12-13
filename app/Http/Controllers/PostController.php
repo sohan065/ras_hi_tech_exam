@@ -19,8 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::where('is_active', true)->get();
-        return view('index', compact('posts'));
+        // $posts = Post::where('is_active', true)->get();
+        // return view('index', compact('posts'));
     }
 
     /**
@@ -138,12 +138,13 @@ class PostController extends Controller
             return redirect()->route('user.login')->with('error', 'You need to log in to perform this action.');
         }
     }
-
+    // dash board user post filter 
     public function filter(Request $request)
     {
+
         if (Auth::check()) {
             $startDateInput = $request->input('start_date');
-            $startDate = Carbon::createFromFormat('d/m/Y', $startDateInput)->format('Y-d-m');
+            $startDate = Carbon::createFromFormat('m/d/Y', $startDateInput)->format('Y-m-d');
             $user = Auth::user();
             $filteredPosts = Post::where('user', $user->id)->whereDate('created_at', '=', $startDate)
                 ->get();

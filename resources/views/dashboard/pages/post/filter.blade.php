@@ -13,6 +13,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Text</th>
                         <th scope="col">Image</th>
+                        <th scope="col">Date</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -24,13 +25,16 @@
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->text }}</td>
                             <td><img src="{{ $post->image }}" alt="" srcset=""></td>
+                            <td>{{ $post->created_at }}</td>
                             <td>
+                                <a class="btn btn-primary" href="{{ route('post.edit', $post->id) }}">edit</a>
                                 @if ($post->is_active == 1)
                                     <a class="btn btn-primary"
                                         href="{{ route('post.toggleActive', $post->id) }}">InActive</a>
                                 @else
                                     <a class="btn btn-primary" href="{{ route('post.toggleActive', $post->id) }}">Active</a>
                                 @endif
+                                <a href="{{ route('post.destroy', $post->id) }}" class="btn btn-danger"> Delete </a>
 
                             </td>
                         </tr>

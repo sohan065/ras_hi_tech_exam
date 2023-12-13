@@ -23,6 +23,10 @@ composer install
 
 Copy the `.env.example` file to `.env` and update the database credentials.
 
+```bash
+cp .env.example .env
+```
+
 Generate artisan key.
 
 ```bash

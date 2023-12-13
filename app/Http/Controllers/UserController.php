@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -31,7 +30,10 @@ class UserController extends Controller
     }
     public function index()
     {
-        $users = User::with('posts')->orderBy('id', 'DESC')->get();
+        $users = User::with(['posts' => function ($query) {
+            // Retrieve posts where is_active is true
+            $query->where('is_active', true);
+        }])->orderBy('id', 'DESC')->get();
 
         return view('user.pages.index', compact('users'));
     }
@@ -89,14 +91,20 @@ class UserController extends Controller
         Auth::logout();
         return redirect()->route('user.login');
     }
+    // post filter for home page
     public function filterUserPost(Request $request)
     {
 
         $startDateInput = $request->input('start_date');
         $userName = $request->input('user_name');
-        $startDate = Carbon::createFromFormat('d/m/Y', $startDateInput)->format('Y-d-m');
+        $startDate = Carbon::createFromFormat('m/d/Y', $startDateInput)->format('Y-m-d');
         $user = Auth::user();
-        $filterUserPost = User::where('name', 'LIKE', "%$userName%")->with('posts')->whereDate('created_at', '=', $startDate)
+        $filterUserPost = User::where('name', 'LIKE', "%$userName%")
+            ->with(['posts' => function ($query) use ($startDate) {
+                // Filter posts based on the specified start date and active status
+                $query->whereDate('created_at', '=', $startDate)
+                    ->where('is_active', true);
+            }])
             ->get();
         return view('user.pages.filter', compact('filterUserPost'));
     }
